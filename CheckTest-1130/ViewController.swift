@@ -21,7 +21,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         if let str: String = userDefaults.string(forKey: "text") {
+            // unwrap userDefaults.string(forKey:) type String? to String
+            // userDefaults.string(forKey:)をString? から Stringへアンラップ
             textField.text = str
             
         }
@@ -29,7 +32,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func selectSave(sender: UIButton) {
+        
         if let str: String = textField.text {
+            // unwrap textField.text type String? to String
+            // textField.textをString? から Stringへアンラップ
             userDefaults.set(str, forKey: "text")
         }
     }
