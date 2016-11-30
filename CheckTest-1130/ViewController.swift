@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet var textField: UITextField!
     
-    let userDefaults: UserDefaults = UserDefaults.standard
-
+    let userDefaults: UserDefaults!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -22,12 +22,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        if let str: String = userDefaults.string(forKey: "text") {
-            // unwrap userDefaults.string(forKey:) type String? to String
-            // userDefaults.string(forKey:)をString? から Stringへアンラップ
-            textField.text = str
-            
-        }
+        // unwrap userDefaults.string(forKey:) type String? to String
+        // userDefaults.string(forKey:)をString? から Stringへアンラップ
+        textField.text = userDefaults.string(forKey: "text")!
         textField.becomeFirstResponder()
     }
     
@@ -42,11 +39,5 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // Close keyboard if return key is tapped.
     // Returキーでキーボードを閉じる
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        textField.resignFirstResponder()
-        return true
-    }
-    
 }
 
