@@ -30,11 +30,9 @@ class ViewController: UIViewController {
     
     @IBAction func selectSave(sender: UIButton) {
         
-        if let str: String = textField.text {
             // unwrap textField.text type String? to String
             // textField.textをString? から Stringへアンラップ
-            userDefaults.set(str, forKey: "text")
-        }
+            userDefaults.set(textField.text!, forKey: "text")
     }
     
     // Close keyboard if return key is tapped.
